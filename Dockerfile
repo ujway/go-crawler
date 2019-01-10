@@ -1,7 +1,6 @@
-# TODO: use alpine image
 FROM golang:alpine
 
-ENV app_name=go-clowler
+ENV app_name=go-crawler
 ENV organization=ujway
 ENV http_port=8080
 ENV https_port=10443
@@ -34,13 +33,7 @@ RUN apk update && \
       git \
       build-base
 
-RUN go get github.com/astaxie/beego
-RUN go get github.com/astaxie/beego/httplib
-RUN go get github.com/astaxie/beego/validation
-RUN go get github.com/jinzhu/gorm
-RUN go get github.com/satori/go.uuid
-RUN go get cloud.google.com/go/datastore
-
+RUN go get github.com/PuerkitoBio/goquery
 RUN mkdir -p $GOPATH/src/github.com/$organization/$app_name
 COPY . $GOPATH/src/github.com/$organization/$app_name
 WORKDIR $GOPATH/src/github.com/$organization/$app_name
