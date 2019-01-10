@@ -1,0 +1,10 @@
+version: '3'
+services:
+  app:
+    build: .
+    image: go_crawler
+    container_name: go_crawler
+    ports:
+      - 3456:8080
+    volumes:
+      - .:/go/src/github.com/ujway/go-crawler
